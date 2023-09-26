@@ -7,7 +7,7 @@ import randomstring from "randomstring"
 export const register = async(req: Request, res: Response) =>{
     const {nombre, email, password, rol }: IUser = req.body
 
-    const user = new User({nombre, email, password})
+    const user = new User({nombre, email, password, rol})
 
     const salt = bcryptjs.genSaltSync()
 
