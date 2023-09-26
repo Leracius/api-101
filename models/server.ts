@@ -1,19 +1,28 @@
 import express, {Express} from 'express';
 import homeRoutes from '../routes/home'
+import userRoutes from '../routes/users'
+import { dbconection } from '../database/config';
 
 export class Server {
     app: Express
     port: string | number | undefined
     path: string
+    userPath : string
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT
         this.path= '/'
+        this.userPath='/auth'
 
+        this.conectarDB()
         this.middlewares()
         this.routes()
     };
+
+    async conectarDB(): Promise<void>{
+        await dbconection()
+    }
 
     middlewares(): void {
         this.app.use(express.json())
@@ -21,6 +30,7 @@ export class Server {
 
     routes(): void{
         this.app.use(this.path, homeRoutes)
+        this.app.use(this.userPath, userRoutes)
     }
 
     listen(): void{
