@@ -2,6 +2,7 @@ import express, {Express} from 'express';
 import homeRoutes from '../routes/home'
 import userRoutes from '../routes/users'
 import { dbconection } from '../database/config';
+import cors from 'cors'
 
 export class Server {
     app: Express
@@ -26,6 +27,7 @@ export class Server {
 
     middlewares(): void {
         this.app.use(express.json())
+        this.app.use(cors())
     }
 
     routes(): void{
