@@ -1,10 +1,18 @@
 import { Router } from "express";
-import { gethome } from "../controllers/controller";
+import { getComments, gethome, postComments } from "../controllers/controller";
 
 const router = Router()
 
 router.get('/', [
     
 ] ,gethome)
+
+router.post('/comments',[
+
+], postComments)
+
+router.get('/comments',[
+
+], getComments)
 
 export default router
