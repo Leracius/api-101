@@ -58,12 +58,9 @@ export const getComments = async (req: Request, res: Response) => {
       await comentario.save();
   
       res.json({
-        msg: "Propiedad 'mg' incrementada exitosamente",
-        timestamp: new Date().toLocaleString(),
-        comentario,
+        msg: `le diste me gusta a ${nombre}`,
       });
     } catch (error) {
-      console.error("Error al incrementar 'mg':", error);
       res.status(500).json({ error: "Error al incrementar 'mg'" });
     }
   };
